@@ -1,0 +1,13 @@
+.rootFormContainer {
+  height: -webkit-fill-available;
+}
+
+
+#loginCard{
+    top: 35%;
+    padding: 2%;
+    text-align: center;
+    width: 50%;
+    left: 25%;
+}
+

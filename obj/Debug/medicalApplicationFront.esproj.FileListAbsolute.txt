@@ -1,0 +1,2 @@
+C:\Users\Carlos\source\repos\medicalApplicationFront\obj\Debug\medicalApplicationFront.esproj.SuggestedBindingRedirects.cache
+C:\Users\Carlos\source\repos\medicalApplicationFront\obj\Debug\medicalApplicationFront.esproj.CoreCompileInputs.cache

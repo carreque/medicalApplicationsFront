@@ -1,0 +1,109 @@
+<app-nav-bar [activeLink]="''"></app-nav-bar>
+
+<ng-container *ngIf="this.user.discriminator == 'Medico'">
+  <div class="card cardEditUser">
+    <form (ngSubmit)="editUser()">
+      <div class="col-12 text-start">
+        <h2>Datos de Contacto</h2>
+        <hr />
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingUsernameMedic" placeholder="Introduzca su nombre" name="name" [(ngModel)]="this.user.name" />
+          <label for="floatingUsernameMedic">Nombre</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingLastNamesMedic" placeholder="Introduzca sus apellidos" name="lastnames" [(ngModel)]="this.user.lastnames" />
+          <label for="floatingLastNamesMedic">Apellidos</label>
+        </div>
+      </div>
+      <div class="col-12 text-start mt-2">
+        <h2>Datos de la aplicación</h2>
+        <hr />
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingUserMedic" placeholder="Introduzca su usuario" name="user" [(ngModel)]="this.user.user" />
+          <label for="floatingUserMedic">Usuario</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingKeyMedic" placeholder="Introduzca su clave" name="key" [(ngModel)]="this.user.key" />
+          <label for="floatingKeyMedic">Clave</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingMembership" placeholder="Introduzca su Membresía" name="membership" [(ngModel)]="this.user.memberShipNumber" />
+          <label for="floatingMembership">Membresía</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="password" class="form-control" id="floatingPasswordMedic" placeholder="Introduzca su contraseña" name="password" [(ngModel)]="this.user.password" />
+          <label for="floatingPasswordMedic">Contraseña</label>
+        </div>
+      </div>
+      <div class="mt-3 text-center">
+        <button type="button" class="btn btn-warning me-2"><a class="text-decoration-none text-white" routerLink="/citas">Volver</a></button>
+        <button type="submit" class="btn btn-primary me-2">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="deleteUser()">Eliminar Cuenta</button>
+      </div>
+    </form>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="this.user.discriminator == 'Paciente'">
+  <div class="card cardEditUser">
+    <form (ngSubmit)="editUser()">
+      <div class="col-12 text-start">
+        <h2>Datos de Contacto</h2>
+        <hr />
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingUsernamePatient" placeholder="Introduzca su nombre" name="name" [(ngModel)]="this.user.name" />
+          <label for="floatingUsernamePatient">Nombre</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingLastNamesPatient" placeholder="Introduzca sus apellidos" name="lastnames" [(ngModel)]="this.user.lastnames" />
+          <label for="floatingLastNamesPatient">Apellidos</label>
+        </div>
+      </div>
+      <div class="col-12 text-start">
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingAddress" placeholder="Introduzca su dirección" name="address" [(ngModel)]="this.user.address" />
+          <label for="floatingAddress">Dirección</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingTlf" placeholder="Introduzca su telefono" name="tlf" [(ngModel)]="this.user.tlf" />
+          <label for="floatingTlf">Teléfono</label>
+        </div>
+      </div>
+      <div class="col-12 text-start mt-2">
+        <h2>Datos de la aplicación</h2>
+        <hr />
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingUserPatient" placeholder="Introduzca su usuario" name="user" [(ngModel)]="this.user.user" />
+          <label for="floatingUserPatient">Usuario</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingKeyPatient" placeholder="Introduzca su clave" name="key" [(ngModel)]="this.user.key" />
+          <label for="floatingUserPatient">Clave</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingNss" placeholder="Introduzca su número de la seguridad social" name="nss" [(ngModel)]="this.user.nss" />
+          <label for="floatingNss">Nss</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="text" class="form-control" id="floatingCardNumber" placeholder="Introduzca su número de tarjeta" name="cardNumber" [(ngModel)]="this.user.cardNumber" />
+          <label for="floatingCardNumber">Tarjeta</label>
+        </div>
+        <div class="form-floating p-1">
+          <input type="password" class="form-control" id="floatingPasswordMedic" placeholder="Introduzca su contraseña" name="password" [(ngModel)]="this.user.password" />
+          <label for="floatingPasswordMedic">Contraseña</label>
+        </div>
+      </div>
+      <div class="mt-3 text-center">
+        <button type="button" class="btn btn-warning me-3"><a class="text-decoration-none text-white" routerLink="/citas">Volver</a></button>
+        <button type="submit" class="btn btn-primary me-2">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="deleteUser">Eliminar Cuenta</button>
+      </div>
+    </form>
+  </div>
+</ng-container>
+
+

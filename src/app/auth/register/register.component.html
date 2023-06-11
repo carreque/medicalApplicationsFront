@@ -1,0 +1,130 @@
+<div class="rootFormContainer">
+
+  <ng-container *ngIf="!isPatient() && !isMedic()">
+    <div class="card animate__animated animate__pulse registerCard">
+      <div class="card-header">
+        <div class="card-title">Seleccione su tipo de usuario</div>
+      </div>
+      <div class="card-body d-flex" (click)="setMedic(true, $event);" id="registerCardForMedic">
+        <div class="col-6 text-center d-block divSelection">
+          <img ngSrc="https://us.123rf.com/450wm/tuktukdesign/tuktukdesign1609/tuktukdesign160900025/65803098-icono-m%C3%A9dico-m%C3%A9dico-m%C3%A9dico-cuidado-de-la-salud-la-ilustraci%C3%B3n-vectorial-glifo-md.jpg" alt="imagenMedico" class="img-fluid" loading="lazy" width="300" height="300" />
+          <p>Médico</p>
+        </div>
+        <div class="col-6 text-center d-block divSelection" (click)="setPatient(true, $event);" id="registerCardForPatient">
+          <img ngSrc="https://images.vexels.com/media/users/3/153835/isolated/preview/172ddc045ae1707a415adeae0543a5f0-icono-de-trazo-de-color-del-paciente.png" alt="imagenPacient" class="img-fluid" loading="lazy" width="300" height="300" />
+          <p>Paciente</p>
+        </div>
+      </div>
+      <div class="mt-3 text-end">
+        <a routerLink="/login">¿Tienes ya una cuenta?</a>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isPatient()">
+    <div class="card registerCardPatient">
+      <form (ngSubmit)="createNewUser()">
+        <div class="col-12 text-start">
+          <h2>Datos de Contacto</h2>
+          <hr />
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingUsernamePatient" placeholder="Introduzca su nombre" name="name" [(ngModel)]="newUser.name"/>
+            <label for="floatingUsernamePatient">Nombre</label>
+          </div>
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingLastNamesPatient" placeholder="Introduzca sus apellidos" name="lastnames" [(ngModel)]="newUser.lastnames"/>
+            <label for="floatingLastNamesPatient">Apellidos</label>
+          </div>
+        </div>
+        <div class="col-12 text-start">
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingAddress" placeholder="Introduzca su dirección" name="address" [(ngModel)]="newUser.address"/>
+            <label for="floatingAddress">Dirección</label>
+          </div>
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingTlf" placeholder="Introduzca su telefono" name="tlf" [(ngModel)]="newUser.tlf"/>
+            <label for="floatingTlf">Teléfono</label>
+          </div>
+        </div>
+        <div class="col-12 text-start mt-2">
+          <h2>Datos de la aplicación</h2>
+          <hr />
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingUserPatient" placeholder="Introduzca su usuario" name="user" [(ngModel)]="newUser.user"/>
+            <label for="floatingUserPatient">Usuario</label>
+          </div>
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingKeyPatient" placeholder="Introduzca su clave" name="key" [(ngModel)]="newUser.key"/>
+            <label for="floatingUserPatient">Clave</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingNss" placeholder="Introduzca su número de la seguridad social" name="nss" [(ngModel)]="newUser.nss"/>
+            <label for="floatingNss">Nss</label>
+          </div>
+          <div class="form-floating p-1">
+            <input type="text" class="form-control" id="floatingCardNumber" placeholder="Introduzca su número de tarjeta" name="cardNumber" [(ngModel)]="newUser.cardNumber"/>
+            <label for="floatingCardNumber">Tarjeta</label>
+          </div>
+          <div class="form-floating p-1">
+            <input type="password" class="form-control" id="floatingPasswordMedic" placeholder="Introduzca su contraseña" name="password" [(ngModel)]="newUser.password"/>
+            <label for="floatingPasswordMedic">Contraseña</label>
+          </div>
+        </div>
+        <div class="mt-3 buttonDivRegister">
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+          <button type="button" class="btn btn-danger" (click)="setBoth(false, $event);">Volver</button>
+        </div>
+      </form>
+    </div>
+
+  </ng-container>
+
+  <ng-container *ngIf="isMedic()" >
+    <div class="card registerCardMedic mb-5">
+      <form (ngSubmit)="createNewUser()">
+        <div class="col-12 text-start">
+            <h2>Datos de Contacto</h2>
+            <hr />
+            <div class="form-floating p-1">
+              <input type="text" class="form-control" id="floatingUsernameMedic" placeholder="Introduzca su nombre" name="name" [(ngModel)]="newUser.name"/>
+              <label for="floatingUsernameMedic">Nombre</label>
+            </div>
+            <div class="form-floating p-1">
+              <input type="text" class="form-control" id="floatingLastNamesMedic" placeholder="Introduzca sus apellidos" name="lastnames" [(ngModel)]="newUser.lastnames"/>
+              <label for="floatingLastNamesMedic">Apellidos</label>
+            </div>
+        </div>
+        <div class="col-12 text-start mt-2">
+            <h2>Datos de la aplicación</h2>
+            <hr />
+            <div class="form-floating p-1">
+              <input type="text" class="form-control" id="floatingUserMedic" placeholder="Introduzca su usuario" name="user" [(ngModel)]="newUser.user"/>
+              <label for="floatingUserMedic">Usuario</label>
+            </div>
+            <div class="form-floating p-1">
+              <input type="text" class="form-control" id="floatingKeyMedic" placeholder="Introduzca su clave" name="key" [(ngModel)]="newUser.key"/>
+              <label for="floatingKeyMedic">Clave</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating p-1">
+              <input type="text" class="form-control" id="floatingMembership" placeholder="Introduzca su Membresía" name="membership" [(ngModel)]="newUser.memberShipNumber"/>
+              <label for="floatingMembership">Membresía</label>
+            </div>
+            <div class="form-floating p-1">
+              <input type="password" class="form-control" id="floatingPasswordMedic" placeholder="Introduzca su contraseña" name="password" [(ngModel)]="newUser.password"/>
+              <label for="floatingPasswordMedic">Contraseña</label>
+            </div>
+        </div>
+        <div class="mt-3 buttonDivRegister">
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+          <button type="button" class="btn btn-danger" (click)="setBoth(false, $event);">Volver</button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+
+
+</div>

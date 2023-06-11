@@ -1,0 +1,94 @@
+<app-nav-bar [activeLink]="'citas'"></app-nav-bar>
+<div class="container" id="citaContainer">
+  <ng-container *ngIf="!isConcertarCita() && !isVerCitas() && !isEditarCita()">
+    <div class="row">
+      <div class="col-6 text-center parentCardActions">
+        <div class="card cardActions" (click)="setIsVerCitas(true, $event); getAllAppointments()">
+          <img ngSrc="https://elmedicointeractivo.com/wp-content/uploads/2017/07/2017071912314693181.jpg" alt="verCitasUsuario" class="img-fluid" width="700" height="600" loading="lazy" />
+          <h2 class="position-absolute top-50 start-50 translate-middle text-blak">Ver citas</h2>
+        </div>
+      </div>
+      <div class="col-6 text-center parentCardActions" (click)="setIsConcertarCitas(true, $event)">
+        <div class="card cardActions">
+          <img ngSrc="https://www.qnomy.com/webfiles/images/cache/750X560/zcX1/webfiles/fck/image/headers2/992aade2fd568841833d5dac687c709b_industries_medical_appointment_scheduling.jpg" alt="ConcertarCita" class="img-fluid" width="700" height="600" loading="lazy" />
+          <h2 class="position-absolute top-50 start-50 translate-middle text-blak">Concertar cita</h2>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isConcertarCita()">
+    <div class="card">
+      <form (ngSubmit)="createAppointment()">
+        <div class="col-12 p-3">
+          <div class="form-floating p-1">
+            <input type="date" class="form-control" id="floatingDateAppointment" placeholder="Introduzca la fecha que desea seleccionar" name="dateAppointment" [(ngModel)]="cita.date" required/>
+            <label for="floatingDateAppointment">Fecha</label>
+          </div>
+        </div>
+        <div class="col-12 p-3">
+          <div class="form-floating p-1">
+            <textarea class="form-control" aria-label="With textarea" id="floatingReasonAppointment" placeholder="Introduzca el motivo de su consulta" name="reason" [(ngModel)]="cita.reason" required></textarea>
+            <label for="floatingReasonAppointment">Motivo</label>
+          </div>
+        </div>
+        <div class="col-12 p-3">
+          <div class="form-floating p-1">
+            <select class="form-select" name="attribute11" [(ngModel)]="cita.attribute11" required>
+              <option [value]="null" disabled selected>Seleccione un doctor</option>
+              <option *ngFor="let user of medicsList" [value]="user.id">{{user.name}} {{user.lastnames}}</option>
+            </select>
+            <label for="floatingDoctor">Doctor</label>
+          </div>
+        </div>
+        <div class="m-3 text-center">
+          <button type="button" class="btn btn-danger me-2" (click)="setBothAppointmentsValues(false)">Volver</button>
+          <button type="submit" class="btn btn-primary">Pedir Cita</button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isVerCitas()">
+      <div class="row" id="appointemnsContainer">
+        <ng-container *ngFor="let citaPaciente of citasPaciente">
+          <div class="card cardActions col-3 cardsAppointments">
+            <p id="medico">Médico Cita: {{searchDoctor(citaPaciente)}}</p>
+            <p id="reason">Motivo: {{citaPaciente.reason}}</p>
+            <p id="date">Fecha: {{citaPaciente.date}}</p>
+            <div class="m-3 text-center d-flex flex-row">
+              <button class="btn btn-primary me-2" (click)="setIsEditarCitas(true, $event, citaPaciente)" id="editAppointments">Editar</button>
+              <button class="btn btn-secondary me-2" (click)="redirectoToItsDiagnostico(citaPaciente.id)" id="checkDiagnosis">Ver diagnostico</button>
+              <button class="btn btn-danger" (click)="deleteCita(citaPaciente, $event)" id="deleteAppointment">Eliminar</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    <div class="mt-3 text-center">
+      <button class="btn btn-danger" (click)="setBothAppointmentsValues(false)">Volver</button>
+    </div>
+  </ng-container >
+    
+  <ng-container *ngIf="isEditarCita()">
+    <div class="card p-5" id="editionCard">
+      <div class="form-floating">
+        <select class="form-select" name="attribute11" [(ngModel)]="cita.attribute11" value="cita.attribute11" required>
+          <option [value]="null" disabled selected>Seleccione un doctor</option>
+          <option *ngFor="let user of medicsList" [value]="user.id">{{user.name}} {{user.lastnames}}</option>
+        </select>
+      </div>
+      <div class="form-floating">
+        <input type="date" class="form-control" id="dateAppointment" name="dateAppointment" [(ngModel)]="cita.date"/>
+        <label for="dateAppointment">Fecha: </label>
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control" id="reasonAppointment" [(ngModel)]="cita.reason"></textarea>
+        <label for="reasonAppointment">Motivo: </label>
+      </div>
+
+      <div class="m-3 text-center">
+        <button class="btn btn-danger me-3" (click)="setBothAppointmentsValues(false)">Volver</button>
+        <button class="btn btn-primary" (click)="editAppointment()">Editar</button>       
+      </div>
+    </div>
+  </ng-container>
+</div>

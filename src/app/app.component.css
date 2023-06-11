@@ -1,0 +1,13 @@
+#applicationContainer {
+  height: -webkit-fill-available;
+}
+
+#navDropdownMedicalSuppose{
+    top: 2% !important;
+    left: 100% !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 2% !important;
+  left: 100% !important;
+}

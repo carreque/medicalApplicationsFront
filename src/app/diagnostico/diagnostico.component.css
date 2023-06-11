@@ -1,0 +1,11 @@
+#cardDiagnosis {
+  top: 15%;
+}
+
+#rowWithoutDiagnosis{
+    position: relative;
+    top: 10%;
+}
+.cardsAppointments{
+    padding: 2%;
+}

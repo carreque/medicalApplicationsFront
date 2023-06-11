@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" routerLink="/citas">Logo</a></li>
+        <ng-container *ngIf="isUserMedic()">
+          <li class="nav-item"><a class="nav-link" routerLink="/diagnostico/toEdit" id="medicTab">Diagnosticos</a></li>
+        </ng-container>
+        <li class="nav-item"><a [ngClass]="{active: activeLink === 'citas'}" class="nav-link" routerLink="/citas">Citas</a></li>
+      </ul>
+      <div class="d-flex nav-item">
+        <img ngSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png" class="img-fluid" alt="userProfile" width="70" height="70" />
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        </a>
+        <ul class="dropdown-menu" id="navDropdownMedicalSuppose" style="left: 100%; top: 2%;">
+          <li><a class="dropdown-item" routerLink="/showUser/{{userSession}}">Editar</a></li>
+          <li><a class="dropdown-item bg-danger text-white"  (click)="onLogOut()">Cerrar Sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

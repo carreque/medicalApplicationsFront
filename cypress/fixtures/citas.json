@@ -1,0 +1,16 @@
+{
+  "citas": [
+    {
+      "id": 1,
+      "doctor": "Dr. John Doe",
+      "reason": "Checkup",
+      "date": "2022-05-12"
+    },
+    {
+      "id": 2,
+      "doctor": "Dr. Jane Smith",
+      "reason": "Consultation",
+      "date": "2022-05-15"
+    }
+  ]
+}

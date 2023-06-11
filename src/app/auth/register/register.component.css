@@ -1,0 +1,40 @@
+.rootFormContainer {
+  height: -webkit-fill-available;
+}
+
+
+.registerCard {
+  top: 35%;
+  padding: 2%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.registerCardPatient {
+  top: 6%;
+  padding: 2%;
+  text-align: center;
+  margin: 0 auto;
+}
+.registerCardMedic {
+  top: 15%;
+  padding: 2%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.divSelection {
+  transition: transform 0.5s ease-out;
+}
+
+.divSelection:hover {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.buttonDivRegister{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 10px;
+}

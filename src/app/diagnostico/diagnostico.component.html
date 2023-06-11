@@ -1,0 +1,39 @@
+<app-nav-bar [activeLink]="'citas'"></app-nav-bar>
+
+<ng-container *ngIf="!isToCreateDiagnosis()">
+
+  <div class="card text-center p-3" id="cardDiagnosis">
+    <h2>Diagnóstico {{diagnosticoCompleto.id}}</h2>
+    <div class="form-floating p-1">
+      <input type="text" class="form-control" id="medic" placeholder="Introduzca su nombre" value="{{medic.name + medic.lastnames}}" readonly />
+      <label for="medic">Médico</label>
+    </div>
+    <div class="form-floating p-1">
+      <textarea class="form-control" id="diagnosis" placeholder="Introduzca su nombre" value="{{diagnosticoCompleto.disease}}" [(ngModel)]="diagnosticoCompleto.disease" ></textarea>
+      <label for="diagnosis">Diagnóstico del médico</label>
+    </div>
+    <div class="text-center mt-3">
+      <button class="btn btn-danger me-2"> <a class="text-decoration-none text-white" routerLink="/citas">Volver</a> </button>
+      <button class="btn btn-primary" (click)="editDiagnostico()">Editar</button>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="isToCreateDiagnosis()">
+  <div class="row" id="rowWithoutDiagnosis">
+    <ng-container *ngFor="let citaPaciente of appointmentsWithoutDiagnosis">
+      <div class="card col-3 cardsAppointments">
+        <p id="medicDiagnosis">Médico Cita: {{citaPaciente.attribute11}}</p>
+        <p id="reasonDiagnosis">Motivo: {{citaPaciente.reason}}</p>
+        <p id="dateDiagnosis">Fecha: {{citaPaciente.date}}</p>
+        <div class="form-floating">
+          <textarea class="form-control" name="disease" [(ngModel)]="this.disease" id="textAreaDisease"></textarea>
+          <label for="textAreaDisease">Enfermedad: </label>
+        </div>
+        <div class="m-3 text-center">
+          <button class="btn btn-primary" (click)="asignarCitaDiagnostico(citaPaciente)">Diagnosticar</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
